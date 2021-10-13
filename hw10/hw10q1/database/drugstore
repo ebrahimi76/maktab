@@ -1,0 +1,62 @@
+CREATE DATABASE `drugstore`;
+
+CREATE TABLE drugstore.patient (
+	id INT auto_increment NOT NULL,
+	name varchar(100) NOT NULL,
+	username varchar(100) NOT NULL,
+	password varchar(100) NOT NULL,
+	CONSTRAINT patient_pk PRIMARY KEY (id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE drugstore.drug (
+	id INT auto_increment NOT NULL,
+	name varchar(100) NOT NULL,
+	price INT NOT NULL,
+	`number` INT NOT NULL,
+	CONSTRAINT drug_pk PRIMARY KEY (id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE drugstore.admin (
+	id INT auto_increment NOT NULL,
+	name varchar(100) NOT NULL,
+	username varchar(100) NOT NULL,
+	password varchar(100) NOT NULL,
+	CONSTRAINT admin_pk PRIMARY KEY (id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE drugstore.drug_list (
+	id INT auto_increment NOT NULL,
+	patient_id INT NULL,
+	drug_id INT NULL,
+	`number` INT NOT NULL,
+	CONSTRAINT drug_list_pk PRIMARY KEY (id),
+	CONSTRAINT drug_list_FK FOREIGN KEY (patient_id) REFERENCES drugstore.patient(id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT drug_list_FK_1 FOREIGN KEY (drug_id) REFERENCES drugstore.drug(id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE drugstore.prescription (
+	id INT auto_increment NOT NULL,
+	patient_id INT NULL,
+	list_id INT NULL,
+	CONSTRAINT prescription_pk PRIMARY KEY (id),
+	CONSTRAINT prescription_FK FOREIGN KEY (patient_id) REFERENCES drugstore.patient(id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT prescription_FK_1 FOREIGN KEY (list_id) REFERENCES drugstore.drug_list(id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+

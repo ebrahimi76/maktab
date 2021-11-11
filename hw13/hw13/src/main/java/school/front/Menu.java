@@ -1,17 +1,13 @@
 package school.front;
-
 import school.entity.*;
 import school.service.CourseService;
 import school.service.CourseStudentsService;
 import school.service.MajorService;
 import school.service.StudentService;
-
 import java.util.Scanner;
-
 public class Menu {
     private Integer select;
     private Scanner input = new Scanner(System.in);
-
     public void option() {
         while (true) {
             System.out.println("1.student, 2.major, 3.course, 4.grade, 5.exit");

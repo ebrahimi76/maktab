@@ -1,22 +1,18 @@
 package school.dao;
-
 import school.config.DataSourceConfig;
 import school.dao.core.BaseDao;
 import school.entity.Major;
 import school.exception.DataNotFoundException;
 import school.exception.ModificationDataException;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 public class MajorDao implements BaseDao<Major, Integer> {
     private final DataSourceConfig dataSourceConfig = DataSourceConfig.getInstance();
     private Connection connection;
-
     @Override
     public void save(Major entity) {
         try {
@@ -36,11 +32,10 @@ public class MajorDao implements BaseDao<Major, Integer> {
             }
         }
     }
-
     @Override
     public void update(Integer id, Major newEntity) {
         try (Connection connection = dataSourceConfig.createDataSource().getConnection();
-             PreparedStatement ps = connection.prepareStatement("UPDATE maktab.major SET name = ? WHERE m_id =;" + id);) {
+             PreparedStatement ps = connection.prepareStatement("UPDATE maktab.major SET name = ? WHERE m_id = " + id);) {
             ps.setString(1, newEntity.getName());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -48,7 +43,6 @@ public class MajorDao implements BaseDao<Major, Integer> {
             throw new ModificationDataException("Can not update data to db");
         }
     }
-
     @Override
     public void delete(Integer id) {
         try (Connection connection = dataSourceConfig.createDataSource().getConnection();
@@ -60,7 +54,6 @@ public class MajorDao implements BaseDao<Major, Integer> {
             throw new ModificationDataException("Can not update data to db");
         }
     }
-
     @Override
     public Major loadById(Integer id) {
         try (Connection connection = dataSourceConfig.createDataSource().getConnection();
@@ -80,7 +73,6 @@ public class MajorDao implements BaseDao<Major, Integer> {
             throw new DataNotFoundException("Can not find data from db");
         }
     }
-
     @Override
     public List<Major> loadAll() {
         try (Connection connection = dataSourceConfig.createDataSource().getConnection();
@@ -99,11 +91,9 @@ public class MajorDao implements BaseDao<Major, Integer> {
             throw new DataNotFoundException("Can not find data from db");
         }
     }
-
     public void startTransaction() throws SQLException {
         connection.setAutoCommit(false);
     }
-
     public void commit() throws SQLException {
         connection.commit();
     }

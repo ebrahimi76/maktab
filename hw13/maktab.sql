@@ -8,7 +8,7 @@ CREATE TABLE `course` (
 CREATE TABLE `course_students` (
   `s_id` int NOT NULL,
   `c_id` int NOT NULL,
-  `garde` int NOT NULL,
+  `grade` int NOT NULL,
   PRIMARY KEY (`s_id`,`c_id`),
   KEY `course_students_FK_1` (`c_id`),
   CONSTRAINT `course_students_FK` FOREIGN KEY (`s_id`) REFERENCES `student` (`id`),

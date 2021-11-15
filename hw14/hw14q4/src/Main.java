@@ -2,6 +2,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.groupingBy;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,12 +16,12 @@ public class Main {
         System.out.println("PartA");
         students.stream()
                 .sorted(Comparator.comparing(Student::getName))
-                .forEach(s -> System.out.println(s.getName()));
+                .forEach(System.out::println);
         // Part B
         System.out.println("PartB");
         students.stream()
                 .sorted(Comparator.comparing(Student::getName))
-                .collect(Collectors.groupingBy(student -> student.getName().chars().count()))
+                .collect(groupingBy(student -> student.getName().chars().count()))
                 .forEach((key, value) -> System.out.println(key + ": " + value));
     }
 

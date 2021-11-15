@@ -1,15 +1,12 @@
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-        List<Integer> numbers = List.of(12, 15);
-        System.out.println(average(numbers));
+        int a = 13, b = 14;
+        Average average = (n1, n2) -> (n1 + n2) / 2;
+        System.out.println(average.avg(a, b));
     }
 
-    public static Double average(List<Integer> list) {
-        return list.stream()
-                .mapToInt(i -> i)
-                .average()
-                .getAsDouble();
+    @FunctionalInterface
+    interface Average {
+        double avg(double number1, double number2);
     }
 }

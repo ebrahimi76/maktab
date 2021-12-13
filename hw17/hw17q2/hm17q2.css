@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: rgb(61, 153, 156);
+}
+
+.title {
+    text-align: center;
+    padding: 50px 0 20px;
+    color: whitesmoke;
+    text-shadow: 2px 2px 2px black;
+}
+
+.title h1 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 36px;
+}
+
+.container {
+    width: 40%;
+    height: 350px;
+    background: whitesmoke;
+    margin: 0 auto;
+    box-shadow: 0 15px 30px;
+    border-radius: 10px;
+}
+
+.container .right {
+    float: right;
+    width: 50%;
+    height: 350px;
+    padding: 95px 40px;
+}
+
+.container .right p {
+    margin: 0;
+    padding: 1px;
+    font-weight: bold;
+    color: rgb(165, 23, 165);
+}
+
+.container .right input {
+    width: 270px;
+    margin-bottom: 20px;
+    padding: 5px;
+    background: none;
+}
+
+.container .right input[type="text"],
+.container .right input[type="Password"]{
+    border: none;
+    border-bottom: 2px solid purple;
+}
+
+.container .right input[type="text"]:focus,
+.container .right input[type="Password"]:focus{
+    border-bottom: 2px solid purple;
+}
+
+.container .right .btn input {
+    border: none;
+    padding: 10px;
+    background-color: purple;
+    color: whitesmoke;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container .right a {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.container .left {
+    float: left;
+    width: 20%;
+    transform: translate(50%, 300%);
+    outline: none;
+    height: 40px;
+}
